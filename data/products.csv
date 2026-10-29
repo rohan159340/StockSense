@@ -1,0 +1,13 @@
+product_id,name,category,supplier,unit_cost,lead_time_days,current_stock
+P001,Whole Milk 1L,Dairy,North Dairy,1.35,2,28
+P002,Free Range Eggs 6pk,Dairy,North Dairy,2.1,3,34
+P003,Sourdough Loaf,Bakery,Daily Bread Co,2.4,1,18
+P004,Bananas,Produce,Green Valley Produce,0.32,2,48
+P005,Avocados,Produce,Green Valley Produce,0.85,2,31
+P006,Baby Spinach 150g,Fresh Food,Green Valley Produce,1.55,2,15
+P007,Chicken Breast 500g,Meat,Farmstead Foods,5.4,3,22
+P008,Ground Coffee 250g,Grocery,Roast House Supply,4.2,5,44
+P009,Pasta 500g,Grocery,Market Pantry Ltd,1.1,4,39
+P010,Tomatoes 500g,Produce,Green Valley Produce,1.7,2,19
+P011,Greek Yogurt 500g,Dairy,North Dairy,2.65,2,17
+P012,Orange Juice 1L,Grocery,Market Pantry Ltd,2.3,4,29
