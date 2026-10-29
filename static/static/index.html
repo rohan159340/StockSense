@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>StockSense — Inventory intelligence</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#dashboard" aria-label="StockSense home"><span class="brand-mark">S</span><span>StockSense<small>INVENTORY INTELLIGENCE</small></span></a>
+    <div class="nav-label">WORKSPACE</div>
+    <nav>
+      <button class="nav-item active" data-view="dashboard"><span>▦</span> Overview</button>
+      <button class="nav-item" data-view="shortages"><span>⌁</span> Shortage forecast <b id="shortageBadge">0</b></button>
+      <button class="nav-item" data-view="orders"><span>▤</span> Purchase orders</button>
+    </nav>
+    <div class="sidebar-bottom"><div class="shield">✓</div><div><strong>Local &amp; private</strong><small>Orders are never sent externally.</small></div></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div class="breadcrumbs">Workspace <span>/</span> <strong id="crumb">Overview</strong></div><div class="top-actions"><span class="live-dot"></span> Demo - fictional sample data <span class="avatar">SS</span></div></header>
+    <section class="view active" id="dashboardView">
+      <div class="page-heading"><div><div class="eyebrow">YOUR STORE AT A GLANCE</div><h1>Inventory overview</h1><p>Know what to replenish before you run out.</p></div><button class="button primary" id="makeOrders"><span>＋</span> Create draft orders</button></div>
+      <div id="notice" class="notice" hidden></div>
+      <section class="metrics">
+        <article class="metric"><div class="metric-top"><span>Products at risk</span><span class="metric-icon amber">!</span></div><strong id="atRisk">—</strong><small>At or below reorder point</small></article>
+        <article class="metric"><div class="metric-top"><span>Stockouts in 7 days</span><span class="metric-icon red">⌁</span></div><strong id="stockouts7">—</strong><small>Predicted using recent sales</small></article>
+        <article class="metric"><div class="metric-top"><span>Draft order value</span><span class="metric-icon blue">＄</span></div><strong id="draftValue">—</strong><small id="draftCount">Across open draft orders</small></article>
+        <article class="metric"><div class="metric-top"><span>Products tracked</span><span class="metric-icon green">▦</span></div><strong id="productCount">—</strong><small>Across all categories</small></article>
+      </section>
+      <section class="panel inventory-panel"><div class="panel-heading"><div><h2>Stock health</h2><p>Sales velocity, remaining cover, and reorder guidance</p></div><div class="table-tools"><label class="search"><span>⌕</span><input id="search" placeholder="Search products" aria-label="Search products"></label><select id="categoryFilter" aria-label="Filter by category"><option value="">All categories</option></select></div></div>
+        <div class="table-wrap"><table><thead><tr><th>PRODUCT</th><th>SUPPLIER</th><th>ON HAND</th><th>AVG / DAY <small>7D</small></th><th>COVER</th><th>REORDER AT</th><th>RECOMMENDED</th><th>STATUS</th></tr></thead><tbody id="inventoryRows"><tr><td colspan="8" class="empty">Loading inventory…</td></tr></tbody></table></div>
+        <div class="table-footer"><span id="rowCount"></span><span>Forecast uses a 7-day sales average</span></div>
+      </section>
+      <section class="panel upload-panel"><div class="upload-copy"><div class="upload-icon">⇧</div><div><h2>Bring your own data</h2><p>Upload product and sales CSV files. Imported files replace the corresponding sample dataset.</p></div></div><form id="uploadForm" class="upload-form"><select name="kind" aria-label="CSV data type"><option value="products">Products CSV</option><option value="sales">Sales history CSV</option></select><input type="file" name="file" accept=".csv,text/csv" required aria-label="Choose CSV"><button class="button secondary">Import CSV</button></form></section>
+      <footer>StockSense <span>·</span> Forecasts are estimates based on recorded sales.</footer>
+    </section>
+    <section class="view" id="shortagesView">
+      <div class="page-heading"><div><div class="eyebrow">PLAN AHEAD</div><h1>Shortage forecast</h1><p>Products expected to run out within the next 14 days.</p></div></div>
+      <section class="panel"><div class="panel-heading"><div><h2>Upcoming stockouts</h2><p>Sorted by soonest predicted stockout</p></div><span class="count-pill" id="forecastCount">0 products</span></div><div id="shortageCards" class="forecast-list"></div></section>
+    </section>
+    <section class="view" id="ordersView">
+      <div class="page-heading"><div><div class="eyebrow">REVIEW BEFORE YOU ACT</div><h1>Purchase orders</h1><p>Drafts are saved locally. Approval only updates their local status.</p></div><button class="button primary" id="makeOrders2"><span>＋</span> Generate drafts</button></div>
+      <div id="ordersList" class="orders-list"></div>
+      <div class="privacy-note"><span>✓</span><div><strong>No orders are ever sent.</strong><p>Approving or rejecting a draft records your decision in a local JSON file only.</p></div></div>
+    </section>
+  </main>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
